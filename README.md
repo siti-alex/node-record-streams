@@ -1,5 +1,5 @@
 ## Description
-A simple script for recording live broadcasts from youtube and twitch
+A simple script for recording live broadcasts from **youtube** and **twitch**
 
 ## Critical dependencies
 ```
