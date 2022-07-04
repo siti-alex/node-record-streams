@@ -13,6 +13,7 @@
     "node-fetch": "^3.2.6"
   },
   "devDependencies": {
-    "node-html-parser": "^5.3.3"
+    "node-html-parser": "^5.3.3",
+    "@types/node": "^16.11.7"
   }
 }

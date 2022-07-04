@@ -1,6 +1,8 @@
-const ch_process = require('child_process')
+// const ch_process = require('child_process')
 
-async function getHLS(url) {
+import * as ch_process from "child_process";
+
+export async function getHLS(url) {
     const output = await ch_process.spawn(
         `youtube-dl`,
         [
@@ -11,7 +13,7 @@ async function getHLS(url) {
     return output;
 }
 
-async function downloadStream(url){
+export async function downloadStream(url){
     const out = ch_process.spawn(
         `ffmpeg`,
         [
@@ -25,12 +27,12 @@ async function downloadStream(url){
     console.log('Пишем...')
     return out;
 }
-getHLS(process.argv[process.argv.length-1]).then(output => {
-    output.stdout.on('data', data=>{
-        // console.log(data.toString())
-        console.log(process.pid)
-        downloadStream(data.toString())
-    })
-})
+// getHLS(process.argv[process.argv.length-1]).then(output => {
+//     output.stdout.on('data', data=>{
+//         // console.log(data.toString())
+//         console.log(process.pid)
+//         downloadStream(data.toString())
+//     })
+// })
 
 

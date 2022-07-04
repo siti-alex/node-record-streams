@@ -1,5 +1,6 @@
 import { GetIdChannel } from './getId.js';
 import {IsStreaming} from './isStreaming.js';
+import {getHLS, downloadStream} from "./record.js";
 
 const key = process.argv[2]
 const channelURL = process.argv[3]
@@ -16,6 +17,16 @@ if(key === 'name'){
 if(key === 'id'){
     IsStreaming(channelURL).then(answer => {
         console.log(answer)
+    })
+}
+
+if(key === 'record'){
+    getHLS(channelURL).then(output => {
+        output.stdout.on('data', data=>{
+            // console.log(data.toString())
+            console.log(process.pid)
+            downloadStream(data.toString())
+        })
     })
 }
 
