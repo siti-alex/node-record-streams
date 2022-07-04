@@ -1,6 +1,4 @@
-// console.log(process.pid)
 const ch_process = require('child_process')
-const os = require('os');
 
 async function getHLS(url) {
     const output = await ch_process.spawn(
