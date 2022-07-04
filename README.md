@@ -16,5 +16,7 @@ $ pip install --upgrade youtube-dl
 
 ## Running
 ```
-$ node record.js <url>
+$ node main.js name <NameChannel> -> online or not
+$ node main.js id <IdChannel> -> online or not by ID
+$ node main.js record <url stream> -> record stream
 ```
