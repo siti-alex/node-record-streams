@@ -1,5 +1,3 @@
-// const ch_process = require('child_process')
-
 import * as ch_process from "child_process";
 
 export async function getHLS(url) {
@@ -14,25 +12,18 @@ export async function getHLS(url) {
 }
 
 export async function downloadStream(url){
-    const out = ch_process.spawn(
-        `ffmpeg`,
-        [
-            '-i',
-            `${url}`,
-            '-c',
-            'copy',
-            `out${process.pid}.ts`,
-            ]
-    );
+    let out = ch_process.exec(`ffmpeg -i ${url} -c copy out${process.pid}.ts`, (error, stdout, stderr) => {
+        if(error) {
+            console.log(`Ошибка ${error.message}`)
+            return;
+        }
+        if(stderr){
+            console.error(`stderr: ${stderr}`)
+            return;
+        }
+        console.log(`Поток: ${stdout}`)
+
+    })
     console.log('Пишем...')
     return out;
 }
-// getHLS(process.argv[process.argv.length-1]).then(output => {
-//     output.stdout.on('data', data=>{
-//         // console.log(data.toString())
-//         console.log(process.pid)
-//         downloadStream(data.toString())
-//     })
-// })
-
-

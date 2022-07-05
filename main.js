@@ -25,7 +25,7 @@ if(key === 'record'){
         output.stdout.on('data', data=>{
             // console.log(data.toString())
             console.log(process.pid)
-            downloadStream(data.toString())
+            downloadStream(data.toString().trim())
         })
     })
 }
