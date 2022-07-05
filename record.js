@@ -12,18 +12,8 @@ export async function getHLS(url) {
 }
 
 export async function downloadStream(url){
-    let out = ch_process.exec(`ffmpeg -i ${url} -c copy out${process.pid}.ts`, (error, stdout, stderr) => {
-        if(error) {
-            console.log(`Ошибка ${error.message}`)
-            return;
-        }
-        if(stderr){
-            console.error(`stderr: ${stderr}`)
-            return;
-        }
-        console.log(`Поток: ${stdout}`)
-
-    })
+    let out = ch_process.spawn(`ffmpeg`, [`-i`, `${url}`, `-c`, `copy`, `out${process.pid}.ts`],{ stdio : 'ignore' })
     console.log('Пишем...')
     return out;
 }
+

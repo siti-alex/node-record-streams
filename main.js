@@ -4,6 +4,7 @@ import {getHLS, downloadStream} from "./record.js";
 
 const key = process.argv[2]
 const channelURL = process.argv[3]
+let buffer = null;
 
 if(key === 'name'){
     GetIdChannel(channelURL)
@@ -29,4 +30,5 @@ if(key === 'record'){
         })
     })
 }
+
 
